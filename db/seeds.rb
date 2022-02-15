@@ -7,7 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 u35_list=[
-  "Hbf",
+  "Hauptbahnhof",
   "Oskar-Hoffmann-Straße",
   "Waldring",
   "Wasserstraße",
@@ -20,7 +20,7 @@ u35_list=[
 ]
 
 l308_list=[
-  "Hbf",
+  "Hauptbahnhof",
   "Bermuda-Dreieck",
   "Schauspielhaus",
   "Bergmannsheil",
@@ -78,6 +78,8 @@ create_stations(l308_list)
 
 l1 = Line.create(name: "U35", end_station: Station.find_by(name: "Hustadt"))
 l2 = Line.create(name: "308", end_station: Station.find_by(name: "Weitmar Mitte"))
+l3 = Line.create(name: "U35", end_station: Station.find_by(name: "Hauptbahnhof"))
+l4 = Line.create(name: "308", end_station: Station.find_by(name: "Hauptbahnhof"))
 
 create_departure_times(l1, u35_list, DayOfWeek.find(1), 800)
 #create_departure_times(l1, u35_list, DayOfWeek.find(1), 800)
@@ -85,8 +87,19 @@ create_departure_times(l1, u35_list, DayOfWeek.find(1), 900)
 create_departure_times(l1, u35_list, DayOfWeek.find(2), 800)
 create_departure_times(l1, u35_list, DayOfWeek.find(3), 800)
 
-
 create_departure_times(l2, l308_list, DayOfWeek.find(1), 900)
 create_departure_times(l2, l308_list, DayOfWeek.find(5), 1300)
 create_departure_times(l2, l308_list, DayOfWeek.find(5), 1440)
 create_departure_times(l2, l308_list, DayOfWeek.find(7), 1500)
+
+
+create_departure_times(l3, u35_list.reverse, DayOfWeek.find(1), 800)
+#create_departure_times(l3, u35_list.reverse, DayOfWeek.find(1), 800)
+create_departure_times(l3, u35_list.reverse, DayOfWeek.find(4), 900)
+create_departure_times(l3, u35_list.reverse, DayOfWeek.find(5), 800)
+create_departure_times(l3, u35_list.reverse, DayOfWeek.find(7), 800)
+
+create_departure_times(l4, l308_list.reverse, DayOfWeek.find(1), 900)
+create_departure_times(l4, l308_list.reverse, DayOfWeek.find(4), 1300)
+create_departure_times(l4, l308_list.reverse, DayOfWeek.find(5), 1440)
+create_departure_times(l4, l308_list.reverse, DayOfWeek.find(6), 1500)
